@@ -15,17 +15,59 @@
 */
 
 // Principle 1
-
 // code example for Window Binding
+console.log(this);
+
 
 // Principle 2
-
 // code example for Implicit Binding
+const vegetable={
+    greeting:"howdy",
+    speak:function(name){
+        console.log(`${this.greeting} I'm a ${name}`)
+    }
+}
+vegetable.speak("carrot");
 
 // Principle 3
-
 // code example for New Binding
+function Human(person){
+    this.hobby="driving",
+    this.city="San Deigo",
+    this.speak=function(name){
+        console.log(`I am ${person}, I live in ${this.city}`);
+    };
+}
+const jay= new Human('James Bond');
+const ojob= new Human("OddJob");
+jay.speak("James Bond");
+ojob.speak("OddJob");
+
 
 // Principle 4
-
 // code example for Explicit Binding
+function Cars(model){
+    this.name=model.name,
+    this.color=model.color
+}
+const speak=function(){
+    console.log(`I drive a ${this.name}`);
+};
+
+const zed= new Cars({
+    name:"350z",
+    color:"red",
+});
+
+const bmw= new Cars({
+    name:"m3",
+    color:"white",
+});
+
+const redy= speak.bind(zed);
+redy();
+
+
+
+
+
